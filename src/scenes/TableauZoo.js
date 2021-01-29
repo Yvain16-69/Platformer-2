@@ -36,7 +36,7 @@ class TableauZoo extends Tableau{
         //notre monstre
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"kirby");
         this.monstre.setOrigin(90,0);
-        this.monstre.setDisplaySize(150,150);
+        this.monstre.setDisplaySize(80,80);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
         this.monstre.setVelocityX(50);
