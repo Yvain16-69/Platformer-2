@@ -3,9 +3,9 @@ class TableauZoo extends Tableau{
     preload() {
         super.preload();
         this.load.image('star', 'assets/star.png');
-        this.load.image('monster-violet', 'assets/monster-violet.png');
+        this.load.image('monster-violet', 'assets/Bandana-Dee.png');
         this.load.image('Burt', 'assets/Burt.png');
-        this.load.image('kirby', 'assets/kirby.png');
+        this.load.image('kirby', 'assets/kib8b.png');
     }
     create() {
         super.create();
@@ -27,21 +27,14 @@ class TableauZoo extends Tableau{
         //notre monstre
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(0,0);
-        this.monstre.setDisplaySize(64,64);
+        this.monstre.setDisplaySize(80,80);
         this.monstre.setCollideWorldBounds(true);
-        this.monstre.setBounce(1);
-        this.monstre.setVelocityX(50);
+        this.monstre.setBounce(1.1);
+        this.monstre.setVelocityX(150);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
-        //notre monstre
-        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"kirby");
-        this.monstre.setOrigin(90,0);
-        this.monstre.setDisplaySize(150,150);
-        this.monstre.setCollideWorldBounds(true);
-        this.monstre.setBounce(1);
-        this.monstre.setVelocityX(50);
-        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
+        new Kirby(this,380,400);
         new Burt(this,400,100);
         new Burt(this,600,100);
 
