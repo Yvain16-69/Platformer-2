@@ -33,6 +33,17 @@ class TableauZoo extends Tableau{
         this.monstre.setVelocityX(150);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
+<<<<<<< HEAD
+=======
+        //notre monstre
+        this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"kirby");
+        this.monstre.setOrigin(90,0);
+        this.monstre.setDisplaySize(80,80);
+        this.monstre.setCollideWorldBounds(true);
+        this.monstre.setBounce(1);
+        this.monstre.setVelocityX(50);
+        this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
+>>>>>>> bddedd8e9da74ca054d0d94434c0a3ca6bcff96e
 
         new Kirby(this,380,400);
         new Burt(this,400,100);
