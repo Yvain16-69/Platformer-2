@@ -2,8 +2,8 @@ class Tableau03 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
-        this.load.image('ground', 'assets/platform.png');
+        this.load.image('star', 'assets/Pièces.png');
+        this.load.image('ground', 'assets/Plateformes.png');
     }
     create() {
         super.create();

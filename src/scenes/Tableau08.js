@@ -2,16 +2,16 @@ class Tableau08 extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
-        this.load.image('ground', 'assets/platform.png');
-        this.load.image('sky-2', 'assets/sky-2.jpg');
+        this.load.image('star', 'assets/Pièces.png');
+        this.load.image('ground', 'assets/Plateformes.png');
+        this.load.image('sky-2', 'assets/Fond.jpg');
     }
     create() {
         super.create();
 
         //on définit la taille du tableau
-        let largeurDuTableau=4000;
-        let hauteurDuTableau=448; //la hauteur est identique au cadre du jeu
+        let largeurDuTableau=2000;
+        let hauteurDuTableau=896; //la hauteur est identique au cadre du jeu
         this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
         this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
 
