@@ -14,7 +14,7 @@ class TableauTiled extends Tableau{
         // nos images
         this.load.image('tiles', 'assets/tableauTiledTileset.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/Tiledmap/TableauYvain.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/TableauYvain.json');
 
         // -----et puis aussi-------------
         this.load.image('monster-fly', 'assets/Burt.png');
