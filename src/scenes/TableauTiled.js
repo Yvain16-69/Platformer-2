@@ -12,13 +12,15 @@ class TableauTiled extends Tableau{
         super.preload();
         // ------pour TILED-------------
         // nos images
-        this.load.image('tiles', 'assets/tableauTiledTileset.png');
+        this.load.image('tiles', 'assets/Tiled/Tile_sheet.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/TiledMap/TableauYvain.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/NivTiledTest2.json');
 
         // -----et puis aussi-------------
         this.load.image('monster-fly', 'assets/Burt.png');
         this.load.image('night', 'assets/Fond.png');
+        this.load.image('tir', 'assets/concombre1.png');
+
         //atlas de texture généré avec https://free-tex-packer.com/app/
         //on y trouve notre étoiles et une tête de mort
     }
@@ -33,7 +35,7 @@ class TableauTiled extends Tableau{
         //notre map
         this.map = this.make.tilemap({ key: 'map' });
         //nos images qui vont avec la map
-        this.tileset = this.map.addTilesetImage('platformPack_tilesheet', 'tiles');
+        this.tileset = this.map.addTilesetImage('TileSheetVibe', 'tiles');
 
         //on agrandit le champ de la caméra du coup
         let largeurDuTableau=this.map.widthInPixels;
@@ -44,7 +46,7 @@ class TableauTiled extends Tableau{
 
         //---- ajoute les plateformes simples ----------------------------
 
-        this.devant = this.map.createLayer('Calque de Tuiles 1', this.tileset, 0, 0);
+        this.devant = this.map.createLayer('sol', this.tileset, 0, 0);
 
         //on définit les collisions, plusieurs méthodes existent:
 
@@ -71,13 +73,13 @@ class TableauTiled extends Tableau{
 
         //----------les monstres volants (objets tiled) ---------------------
 
-        let monstersContainer=this.add.container();
-        // this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
-        // // On crée des montres volants pour chaque objet rencontré
-        // this.flyingMonstersObjects.forEach(monsterObject => {
-        //     let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
-        //     monstersContainer.add(monster);
-        // });
+        this.monstersContainer=this.add.container();
+        ici.monstreTestObject = this.map.getObjectLayer('Monstre1')['objects'];
+        // On crée des montres volants pour chaque objet rencontré
+        ici.monstreTestObject.forEach(monsterObject => {
+            let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
+            this.monstersContainer.add(monster);
+        });
 
 
         //----------débug---------------------
@@ -128,7 +130,7 @@ class TableauTiled extends Tableau{
         let z=1000; //niveau Z qui a chaque fois est décrémenté.
         debug.setDepth(z--);
         //this.boom.setDepth(z--);
-        monstersContainer.setDepth(z--);
+        this.monstersContainer.setDepth(z--);
         this.stars.setDepth(z--);
         //starsFxContainer.setDepth(z--);
         this.devant.setDepth(z--);

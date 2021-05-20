@@ -83,5 +83,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
+    shoot()
+    {
+        var bullet = new Tir(this.scene,this.x, this.y);
+        console.log("Tir");
+        setTimeout(function(){
+            bullet.destroy();
+        },1500);
+    }
+
 
 }

@@ -49,10 +49,13 @@ class Tableau extends Phaser.Scene{
         this.blood.visible=false;
         this.blood.setDepth(1000);
 
+        this.boutonTir = this.input.keyboard.addKey('Q');
+
      }
     update(){
         super.update();
         this.player.move();
+        this.tirPlayer();
     }
 
     /**
@@ -82,6 +85,12 @@ class Tableau extends Phaser.Scene{
                 onComplete();
             }
         })
+    }
+
+    tirPlayer(){
+        if (Phaser.Input.Keyboard.JustDown(this.boutonTir)){
+            this.player.shoot();
+        }
     }
 
     ramasserEtoile (player, star)
