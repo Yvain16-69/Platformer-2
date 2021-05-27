@@ -8,9 +8,9 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.setBounce(0);
         this.setGravityY(700)
         this.setFriction(1,1);
-
-        this.setBodySize(this.body.width-6,this.body.height-10);
-        this.setOffset(3, 10);
+        this.setDisplaySize(70,100)
+        this.setBodySize(this.body.width,this.body.height);
+        this.setOffset(0, 0);
 
         this.anims.create({
             key: 'left',
@@ -26,9 +26,15 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             repeat: -1
         });
         this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'player', frame: 4 } ],
+            key: 'back',
+            frames: [ { key: 'player', frame: 3 } ],
             frameRate: 20
+        });
+        this.anims.create({
+            key: 'stance',
+            frames: [ { key: 'player', frame: 5 } ]
+            // frameRate: 3,
+            // repeat: -1
         });
 
         this._directionX=0;
@@ -71,11 +77,14 @@ class Player extends Phaser.Physics.Arcade.Sprite{
                 break;
             default:
                 this.setVelocityX(0);
+                this.anims.play('stance', true);
+                this.anims.play(this.sens===-1 ? 'back' : 'stance' ,true);
         }
 
         if(this._directionY<0){
             if(this.body.blocked.down || this.body.touching.down){
-                this.setVelocityY(-550);
+                this.setVelocityY(-800);
+                
             }
         }
 

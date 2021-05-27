@@ -11,8 +11,12 @@ class Tir extends ObjetPhysique{
       this.setVelocityX(300 * scene.player.sens);
       this.setBounce(1);
       this.setDepth(1000);
+      let tir = this;
+      scene.physics.add.collider(this, scene.plat, function(){
+         tir.destroy()
+      });
       scene.monstersContainer.iterate(monster=>{
-         scene.physics.add.overlap(this, monster, function(){monster.Tmortlol()}, null, scene);
+         scene.physics.add.overlap(this, monster, function(){monster.Tmortlol(); tir.destroy()}, null, scene);
       })
    }
 }
