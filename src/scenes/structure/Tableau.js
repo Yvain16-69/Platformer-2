@@ -15,7 +15,7 @@ class Tableau extends Phaser.Scene{
      * Par défaut on charge un fond et le player
      */
      preload(){
-        this.load.image('sky', 'assets/ciel.png');
+        //this.load.image('sky', 'assets/ciel.png');
         this.load.image('blood', 'assets/blood.png');
         this.load.spritesheet('player',
             'assets/GokuS.png',

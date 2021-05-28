@@ -16,7 +16,7 @@ let config = {
     scene: [
         new Ui(),
 
-        new TableauTiled("Une rivière"),
+        new TableauTiled("Vibe"),
         new Tableau08("Un plateau qui sort du cadre"),
         new TableauZoo("Un Zoo ?"),
         new Tableau06("Un monstre!"),

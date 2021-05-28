@@ -17,6 +17,7 @@ class TableauTiled extends Tableau{
         this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe.json');
 
         // -----et puis aussi-------------
+        this.load.image('ciel', 'assets/ciel.png');
         this.load.image('monster-fly', 'assets/Burt.png');
         this.load.image('night', 'assets/Fond.png');
         this.load.image('Burt', 'assets/EnnemiVibe.png');
@@ -112,25 +113,38 @@ class TableauTiled extends Tableau{
         //---------- parallax ciel (rien de nouveau) -------------
 
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
-        this.sky=this.add.tileSprite(
+        this.ciel=this.add.tileSprite(
             0,
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'night'
+            'ciel'
         );
-        this.sky2=this.add.tileSprite(
-            0,
-            0,
-            this.sys.canvas.width,
-            this.sys.canvas.height,
-            'night'
-        );
-        this.sky.setOrigin(0,0);
-        this.sky2.setOrigin(0,0);
-        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky2.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky2.blendMode=Phaser.BlendModes.ADD;
+        
+        this.ciel.setOrigin(0,0);
+        this.ciel.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        // this.sky2.blendMode=Phaser.BlendModes.ADD;
+
+        // this.sky=this.add.tileSprite(
+        //     0,
+        //     0,
+        //     this.sys.canvas.width,
+        //     this.sys.canvas.height,
+        //     'night'
+        // );
+        // this.sky2=this.add.tileSprite(
+        //     0,
+        //     0,
+        //     this.sys.canvas.width,
+        //     this.sys.canvas.height,
+        //     'night'
+        // );
+
+        // this.sky.setOrigin(0,0);
+        // this.sky2.setOrigin(0,0);
+        // this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        // this.sky2.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        // this.sky2.blendMode=Phaser.BlendModes.ADD;
 
         //----------collisions---------------------
 
@@ -164,8 +178,10 @@ class TableauTiled extends Tableau{
 
         this.decor.setDepth(z--);
         //this.derriere.setDepth(z--);
-        this.sky2.setDepth(z--);
-        this.sky.setDepth(z--);
+        this.ciel.setDepth(z--);
+        // this.sky2.setDepth(z--);
+        // this.sky.setDepth(z--);
+
 
     }
 
@@ -183,8 +199,8 @@ class TableauTiled extends Tableau{
      */
     moveParallax(){
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-        // this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
-        // this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
+        this.ciel.tilePositionX=this.cameras.main.scrollX*0.6;
+        this.ciel.tilePositionY=this.cameras.main.scrollY*0.6;
         // this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
         // this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;
     }
