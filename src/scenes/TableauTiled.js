@@ -12,9 +12,9 @@ class TableauTiled extends Tableau{
         super.preload();
         // ------pour TILED-------------
         // nos images
-        this.load.image('tiles', 'assets/Tiled/Tile sheet1.png');
+        this.load.image('tiles', 'assets/Tiled/Tile_sheet2.png');
         //les données du tableau qu'on a créé dans TILED
-        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapTest.json');
+        this.load.tilemapTiledJSON('map', 'assets/TiledMap/MapVibe.json');
 
         // -----et puis aussi-------------
         this.load.image('monster-fly', 'assets/Burt.png');
@@ -37,7 +37,7 @@ class TableauTiled extends Tableau{
         //notre map
         this.map = this.make.tilemap({ key: 'map' });
         //nos images qui vont avec la map
-        this.tileset = this.map.addTilesetImage('Tile_sheet1', 'tiles');
+        this.tileset = this.map.addTilesetImage('Tile_sheet2', 'tiles');
 
         //on agrandit le champ de la caméra du coup
         let largeurDuTableau=this.map.widthInPixels;
@@ -49,8 +49,8 @@ class TableauTiled extends Tableau{
         //---- ajoute les plateformes simples ----------------------------
 
         this.solide = this.map.createLayer('sol', this.tileset, 0, 0);
-        this.decor = this.map.createLayer('decor', this.tileset, 0, 0);
-        this.plat = this.map.createLayer('plateformes', this.tileset, 0, 0);
+        this.decor = this.map.createLayer('décor', this.tileset, 0, 0);
+        this.plat = this.map.createLayer('platformes', this.tileset, 0, 0);
 
 
         //on définit les collisions, plusieurs méthodes existent:
@@ -83,7 +83,7 @@ class TableauTiled extends Tableau{
         //----------les monstres volants (objets tiled) ---------------------
 
         this.monstersContainer=this.add.container();
-        ici.monstreTestObject = this.map.getObjectLayer('Monstre1')['objects'];
+        ici.monstreTestObject = this.map.getObjectLayer('mob1')['objects'];
         // On crée des montres volants pour chaque objet rencontré
         ici.monstreTestObject.forEach(monsterObject => {
             let monster=new Burt(this,monsterObject.x,monsterObject.y);
@@ -92,7 +92,7 @@ class TableauTiled extends Tableau{
         });
 
         this.plightContainer=this.add.container();
-        ici.plight = ici.map.getObjectLayer('light')['objects'];
+        ici.plight = ici.map.getObjectLayer('ligths')['objects'];
         ici.plight.forEach(plightObjects => {
           let light = new Light(this,plightObjects.x+16,plightObjects.y-10).setDepth(9999);
           light.addLight(this,204,229,151, 200, 0.5, 0.04,false);
